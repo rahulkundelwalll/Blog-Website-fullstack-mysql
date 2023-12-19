@@ -6,7 +6,7 @@ import Menu from '../components/Menu'
 import axios from "axios";
 import moment from "moment";
 import { AuthContext } from "../context/authContext";
-
+import DOMPurify from "dompurify";
 
 
 export default function single() {
@@ -16,7 +16,7 @@ export default function single() {
   const navigate = useNavigate();
 
   
-  const postId = location.pathname.split("/")[2];
+  const postId = location.pathname.split('/')[2];
   // console.log(post)
   const { currentUser } = useContext(AuthContext);
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function single() {
           </div>
           {currentUser.username === post.username &&
          ( <div className="edit">
-            <Link to={'/write?edit=2'}>
+            <Link to={'/write?edit=2'} state={post}>
               <img src={Edit} alt="" />
             </Link>
 
@@ -66,7 +66,11 @@ export default function single() {
           </div>)}
         </div>
         <h1>{post.title}</h1>
-        {post.desc}
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post.desc),
+          }}
+        ></p>
 
       </div>
       <Menu cat={post.cat} />

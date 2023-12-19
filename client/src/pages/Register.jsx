@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+axios.defaults.withCredentials = true;
+
 
 export default function Register() {
   const [inputs,setInputs] = useState({
