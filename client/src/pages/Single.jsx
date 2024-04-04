@@ -22,7 +22,7 @@ export default function single() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/posts/${postId}`);
+        const res = await axios.get(`http://172.28.19.9:3000/api/posts/${postId}`);
         setPost(res.data);
       }
       catch (err) {
@@ -35,7 +35,7 @@ export default function single() {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`http://localhost:8800/api/posts/${postId}`);
+      await axios.delete(`http://172.28.19.9:3000/api/posts/${postId}`);
       navigate("/")
     } catch (err) {
       console.log(err);

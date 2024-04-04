@@ -5,12 +5,12 @@ import PostRoutes from "./routes/posts.js";
 import cookieParser from 'cookie-parser';
 import multer from "multer";
 import cors from 'cors';
+import 'dotenv/config';
 
 const app = express()
 app.use(express.json())
 app.use(cookieParser());
 app.use(cors({
-	origin: 'http://localhost:5173',
 	credentials: true
 }));
 app.use("/api/auth",authRoutes)
@@ -40,6 +40,6 @@ app.get("/test",(req,res)=>{
 })
 
 
-app.listen(8800,()=>{
-    console.log("connected");
+app.listen(process.env.PORT,()=>{
+  console.log(`Server is running on ${process.env.PORT}`)
 })

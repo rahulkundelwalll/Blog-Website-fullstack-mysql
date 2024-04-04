@@ -9,7 +9,7 @@ export default function Menu({cat}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/posts/?${cat}`);
+        const res = await axios.get(`http://172.28.19.9:3000/api/posts/?${cat}`);
         setPosts(res.data);
       }
       catch (err) {

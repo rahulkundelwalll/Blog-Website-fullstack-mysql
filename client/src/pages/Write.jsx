@@ -17,7 +17,7 @@ export default function Write() {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("http://localhost:8800/api/upload", formData);
+      const res = await axios.post("http://172.28.19.9:3000/api/upload", formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -30,13 +30,13 @@ export default function Write() {
 
     try {
       state
-        ? await axios.put(`http://localhost:8800/api/posts/${state.id}`, {
+        ? await axios.put(`http://172.28.19.9:3000/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
             img: file ? imgUrl : "",
           })
-        : await axios.post(`http://localhost:8800/api/posts/`, {
+        : await axios.post(`http://172.28.19.9:3000/api/posts/`, {
             title,
             desc: value,
             cat,

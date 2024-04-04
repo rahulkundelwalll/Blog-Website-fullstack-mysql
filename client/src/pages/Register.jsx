@@ -19,7 +19,7 @@ export default function Register() {
 const handleSubmit = async (e) =>{
   e.preventDefault()
   try{
-     await axios.post("http://localhost:8800/api/auth/register",inputs)
+     await axios.post("http://172.28.19.9:3000/api/auth/register",inputs)
      navigate("/login")
   }catch(err)
   {
